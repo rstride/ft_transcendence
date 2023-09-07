@@ -1,0 +1,17 @@
+version: '3'
+services:
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: ../docker/backend.dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+  db:
+    image: "postgres:13"
+    environment:
+      POSTGRES_USER: your_username
+      POSTGRES_PASSWORD: your_password
+      POSTGRES_DB: your_database
+

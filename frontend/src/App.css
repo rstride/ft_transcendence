@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+
+nav {
+  background-color: #282c34;
+  padding: 1em;
+}
+
+button {
+  margin: 1em;
+  padding: 0.5em 1em;
+  font-size: 1em;
+}
