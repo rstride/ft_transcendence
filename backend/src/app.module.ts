@@ -3,31 +3,21 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { ChatGateway } from './chat/chat.gateway';
 
-TypeOrmModule.forRoot({
-  type: 'postgres',
-  host: 'localhost',
-  port: 5432,
-  username: 'your_username',
-  password: 'your_password',
-  database: 'your_database',
-  entities: [/* your entities here */],
-  synchronize: true,
-}),
-
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: 'db', // Use the service name from docker-compose.yml
       port: 5432,
-      username: 'rstride',
+      username: 'transcendence',
       password: 'garen',
       database: 'database',
-      entities: [/* your entities here */],
+      autoLoadEntities: true,
       synchronize: true,
     }),
-    UsersModule,
+    // other modules
   ],
-  providers: [ChatGateway],
 })
 export class AppModule {}
+
+
