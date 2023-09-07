@@ -12,7 +12,6 @@ ft_transcendence est un site web de jeu en ligne qui permet aux utilisateurs de 
 - [Utilisation](#utilisation)
 - [Tests](#tests)
 - [Contributeurs](#contributeurs)
-- [Licence](#licence)
 
 ## Fonctionnalités
 
@@ -25,7 +24,7 @@ ft_transcendence est un site web de jeu en ligne qui permet aux utilisateurs de 
 ## Technologies Utilisées
 
 - Backend: NestJS
-- Frontend: (Votre framework TypeScript)
+- Frontend: React
 - Base de données: PostgreSQL
 - Autres: Docker
 
@@ -66,3 +65,9 @@ Pour exécuter les tests, utilisez la commande suivante :
 
 ```bash
 npm run test
+```
+
+## Contributeurs
+
+rstride, romaurel, masserie
+
