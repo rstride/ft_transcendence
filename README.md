@@ -2,7 +2,7 @@
 
 ## Description
 
-ft_transcendence est un site web de jeu en ligne qui permet aux utilisateurs de jouer au célèbre jeu Pong tout en profitant de fonctionnalités de chat et de réseau social. Le projet est développé en utilisant NestJS pour le backend et un framework TypeScript de votre choix pour le frontend.
+ft_transcendence est un site web de jeu en ligne qui permet aux utilisateurs de jouer au célèbre jeu Pong tout en profitant de fonctionnalités de chat et de réseau social. Le projet est développé en utilisant NestJS pour le backend et React pour le frontend.
 
 ## Table des Matières
 
