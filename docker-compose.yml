@@ -7,7 +7,7 @@ services:
       POSTGRES_PASSWORD: garen
       POSTGRES_DB: database
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
   backend:
     build: 
       context: ./backend
@@ -27,9 +27,9 @@ services:
       context: ./frontend
       dockerfile: ../docker/frontend.dockerfile  
     ports:
-      - "3000:3000"
+      - "8080:3000"
     volumes:
       - ./frontend:/usr/src/app
       - /usr/src/app/node_modules
-    environment:
+    env_file:
       - ./docker/frontend.env

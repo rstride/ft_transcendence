@@ -7,7 +7,7 @@ import { ChatGateway } from './chat/chat.gateway';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'db', // Use the service name from docker-compose.yml
+      host: 'postgres', // Use the service name from docker-compose.yml
       port: 5432,
       username: 'transcendence',
       password: 'garen',
