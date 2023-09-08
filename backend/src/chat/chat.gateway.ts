@@ -1,5 +1,9 @@
-import { SubscribeMessage, WebSocketGateway, Socket } from '@nestjs/websockets';
-import { SendMessageDto } from './your-dto-folder';  // Import from the correct location
+import { Socket } from 'socket.io';
+import { SendMessageDto } from './dto/send-message.dto';  // Import from the correct location
+import { WebSocketGateway } from '@nestjs/websockets';
+import { SubscribeMessage } from '@nestjs/websockets';
+
+
 
 @WebSocketGateway()
 export class ChatGateway {

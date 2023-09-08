@@ -1,6 +1,8 @@
 // src/auth/strategy/42-intranet.strategy.ts
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-oauth2';
+import { Injectable } from '@nestjs/common';
+
 
 @Injectable()
 export class Intranet42Strategy extends PassportStrategy(Strategy, '42') {

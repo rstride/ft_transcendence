@@ -1,7 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
-import { Socket } from 'socket.io';
-import { CreateUserDto, SendMessageDto, CreateRoomDto, JoinRoomDto } from './your-dto-folder';  // Import from the correct location
+import { CreateUserDto } from './dto/create-user.dto';
+import { SendMessageDto } from './dto/send-message.dto';
+import { CreateRoomDto } from './dto/create-room.dto';
+import { JoinRoomDto } from './dto/join-room.dto'
 
 @Injectable()
 export class UsersService {

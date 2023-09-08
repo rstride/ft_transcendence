@@ -1,8 +1,8 @@
 import { Controller, Get, Post, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UsersService } from './users.service';
-import { Socket } from 'socket.io';
-import { CreateUserDto, SendMessageDto } from './your-dto-folder';  // Import from the correct location
+import { SendMessageDto } from './dto/send-message.dto';
+
 
 @Controller('users')
 export class UsersController {
