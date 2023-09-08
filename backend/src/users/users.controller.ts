@@ -1,11 +1,8 @@
-import { Controller, Get } from '@nestjs/common';
-import { UsersService } from './users.service';
+import { Controller, Get, Post, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Injectable } from '@nestjs/common';
+import { UsersService } from './users.service';
 import { Socket } from 'socket.io';
-import { CreateUserDto, SendMessageDto } from './dto';
-
-
+import { CreateUserDto, SendMessageDto } from './your-dto-folder';  // Import from the correct location
 
 @Controller('users')
 export class UsersController {
@@ -15,11 +12,10 @@ export class UsersController {
   getAllUsers() {
     return this.usersService.getAllUsers();
   }
-}
-// src/users/users.controller.ts
 
-@Post('upload-avatar')
-@UseInterceptors(FileInterceptor('avatar'))
-uploadAvatar(@UploadedFile() file) {
-  // Save file and update user profile
+  @Post('upload-avatar')
+  @UseInterceptors(FileInterceptor('avatar'))
+  uploadAvatar(@UploadedFile() file) {
+    // Save file and update user profile
+  }
 }
