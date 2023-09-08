@@ -7,6 +7,9 @@ WORKDIR /usr/src/app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
+# Install npm 10.0.0
+RUN npm install -g npm@10.0.0
+
 # Install dependencies
 RUN npm install
 
