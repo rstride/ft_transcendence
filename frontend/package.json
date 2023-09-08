@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "latest",
     "@testing-library/react": "latest",
     "@testing-library/user-event": "latest",
-    "axios": "latest",
+    "axios": "^1.5.0",
     "react": "latest",
     "react-dom": "latest",
     "react-scripts": "^5.0.1",
