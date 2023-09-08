@@ -1,14 +1,15 @@
 version: '3'
 services:
   db:
-    image: postgres:13
-    environment:
-      POSTGRES_DB: database
-      POSTGRES_USER: transcendence
-      POSTGRES_PASSWORD: garen
+    image: postgres:latest
     volumes:
-      - ./database:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  
+      - ./postgres-data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    environment:
+      - /docker/db.env
+
   backend:
     build: 
       context: ./backend
@@ -17,6 +18,8 @@ services:
       - "3000:3000"
     depends_on:
       - db
+    environment:
+      - /docker/backend.env
   frontend:
     build: 
       context: ./frontend
@@ -26,3 +29,5 @@ services:
     volumes:
       - ./frontend:/usr/src/app
       - /usr/src/app/node_modules
+    environment:
+      - ./docker/frontend.env

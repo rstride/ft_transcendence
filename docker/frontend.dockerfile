@@ -1,5 +1,5 @@
 # Use an official Node runtime as the base image
-FROM node:20
+FROM node:latest
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install frontend dependencies
-RUN npm install -g npm@10.0.0
+RUN npm install -g npm@latest
 
 # Copy the current directory contents into the container
 COPY . .

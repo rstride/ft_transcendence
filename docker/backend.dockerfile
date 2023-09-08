@@ -1,16 +1,23 @@
-# Use Node.js image
-FROM node:20
+# Use the latest stable version of Node.js
+FROM node:latest
 
-# Create app directory
+# Set the working directory
 WORKDIR /usr/src/app
 
-# Install app dependencies
+# Copy package.json and package-lock.json
 COPY package*.json ./
-RUN npm install -g npm@10.0.0
 
-# Bundle app source
+# Install npm version 10.0.0 (if you specifically need this version)
+RUN npm install -g npm@latest
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the code
 COPY . .
 
-# Expose port and start application
-EXPOSE 3000
+# Expose the port the app runs on
+EXPOSE 3001
+
+# Command to run the application
 CMD ["npm", "start"]
