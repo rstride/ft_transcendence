@@ -1,4 +1,7 @@
 import { Injectable } from '@nestjs/common';
+import { Socket } from 'socket.io';
+import { CreateUserDto, SendMessageDto, CreateRoomDto, JoinRoomDto } from './your-dto-folder';
+
 
 @Injectable()
 export class UsersService {
@@ -10,4 +13,12 @@ export class UsersService {
       { id: 2, username: 'user2' },
     ];
   }
+}
+
+// src/users/users.service.ts
+import * as bcrypt from 'bcrypt';
+
+async createUser(createUserDto: CreateUserDto) {
+  const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
+  // Save user with hashedPassword
 }

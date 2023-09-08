@@ -1,9 +1,10 @@
 import { SubscribeMessage, WebSocketGateway } from '@nestjs/websockets';
 
+// src/chat/chat.gateway.ts
 @WebSocketGateway()
 export class ChatGateway {
-  @SubscribeMessage('message')
-  handleMessage(client: any, payload: any): string {
-    return 'Hello world!';
+  @SubscribeMessage('sendMessage')
+  async sendMessage(client: Socket, payload: SendMessageDto) {
+    // Broadcast message to chat room
   }
 }
