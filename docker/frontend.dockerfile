@@ -1,20 +1,20 @@
-# Use an official Node runtime as the base image
+# Use the official Node.js image
 FROM node:latest
 
-# Set the working directory in the container
+# Set the working directory
 WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install frontend dependencies
-RUN npm install -g npm@latest
+# Install dependencies
+RUN npm install
 
-# Copy the current directory contents into the container
+# Copy the rest of the code
 COPY . .
 
-# Make port 3001 available to the world outside this container
-EXPOSE 3001
+# Expose the port the app will run on
+EXPOSE 3000
 
-# Run the app
+# Command to run the application
 CMD ["npm", "start"]

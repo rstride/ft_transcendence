@@ -1,26 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { getAllUsers } from './api'; // Replace with the actual path to your api.js
+import React from 'react';
 
 function App() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await getAllUsers();
-      setUsers(result);
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <div className="App">
-      <h1>Users</h1>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>{user.username}</li>
-        ))}
-      </ul>
+      <h1>Welcome to Transcendence</h1>
+      <p>This is a project that aims to transcend the boundaries of technology.</p>
+      <p>Here, you can find various features that will help you understand the essence of this project.</p>
+      <p>Enjoy!</p>
     </div>
   );
 }

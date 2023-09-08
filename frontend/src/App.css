@@ -1,14 +1,13 @@
 .App {
   text-align: center;
+  margin: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-nav {
-  background-color: #282c34;
-  padding: 1em;
+h1 {
+  color: #333;
 }
 
-button {
-  margin: 1em;
-  padding: 0.5em 1em;
-  font-size: 1em;
+p {
+  color: #666;
 }
