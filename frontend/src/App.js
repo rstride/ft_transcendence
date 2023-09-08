@@ -1,12 +1,28 @@
 import React from 'react';
+import './App.css';
+import PongCanvas from './PongCanvas';
+import Chat from './Chat';
 
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to Transcendence</h1>
-      <p>This is a project that aims to transcend the boundaries of technology.</p>
-      <p>Here, you can find various features that will help you understand the essence of this project.</p>
-      <p>Enjoy!</p>
+      <header className="App-header">
+        <h1>Multiplayer Pong</h1>
+      </header>
+
+      <main className="App-main">
+        <div className="game-area">
+          <PongCanvas />
+        </div>
+
+        <div className="chat-area">
+          <Chat />
+        </div>
+      </main>
+
+      <footer className="App-footer">
+        <p>Created by rstride</p>
+      </footer>
     </div>
   );
 }

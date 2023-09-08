@@ -1,13 +1,35 @@
 .App {
   text-align: center;
-  margin: 20px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
-h1 {
-  color: #333;
+.App-header {
+  background-color: #282c34;
+  padding: 1rem;
+  color: white;
 }
 
-p {
-  color: #666;
+.App-main {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
+
+.game-area {
+  flex: 1;
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  height: 400px;
+}
+
+.chat-area {
+  flex: 1;
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  height: 400px;
+}
+
+.App-footer {
+  background-color: #282c34;
+  padding: 1rem;
+  color: white;
 }
