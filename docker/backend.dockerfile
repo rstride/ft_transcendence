@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install npm 10.0.0
-RUN npm install -g npm@10.0.0
+RUN npm install -g npm@latest
 
 # Install dependencies
 RUN npm install

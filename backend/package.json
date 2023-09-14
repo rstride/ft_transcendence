@@ -22,7 +22,7 @@
   "dependencies": {
     "@nestjs/common": "latest",
     "@nestjs/core": "latest",
-    "@nestjs/passport": "^10.0.1",
+    "@nestjs/passport": "latest",
     "@nestjs/platform-express": "latest",
     "@nestjs/typeorm": "latest",
     "@nestjs/websockets": "latest",
@@ -36,7 +36,7 @@
     "pg": "latest",
     "reflect-metadata": "latest",
     "rxjs": "latest",
-    "socket.io": "^4.7.2",
+    "socket.io": "latest",
     "speakeasy": "latest",
     "typeorm": "latest",
     "ws": "latest"
