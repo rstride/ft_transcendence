@@ -1,23 +1,20 @@
-# Use the official Node.js image
+# Use the latest Node.js image as the base image
 FROM node:latest
 
-# Set the working directory
+# Set the working directory to /usr/src/app
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json
+# Copy the package.json and package-lock.json files to the working directory
 COPY package*.json ./
 
-# Install npm 10.0.0
-RUN npm install -g npm@latest
+# Install the latest version of npm and install the dependencies
+RUN npm install -g npm@latest && npm install
 
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the code
+# Copy the rest of the application files to the working directory
 COPY . .
 
-# Expose the port the app will run on
-EXPOSE 3000
+# Expose port 3001 for the application
+EXPOSE 3001
 
-# Command to run the application
+# Start the application
 CMD ["npm", "start"]

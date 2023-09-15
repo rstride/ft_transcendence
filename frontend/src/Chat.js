@@ -36,10 +36,10 @@ function Chat() {
       <h2>Chat</h2>
 
       <ListGroup>
-        {messages.map((message, index) => (
+        {messages.map(({ username, message }, index) => (
           <ListGroup.Item key={index}>
-            <strong>{message.username}: </strong>
-            {message.message}
+            <strong>{username}: </strong>
+            {message}
           </ListGroup.Item>
         ))}
       </ListGroup>

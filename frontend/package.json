@@ -7,13 +7,14 @@
     "@testing-library/react": "latest",
     "@testing-library/user-event": "latest",
     "axios": "latest",
-    "passport-42": "^1.2.6",
+    "passport-42": "latest",
     "react": "latest",
-    "react-bootstrap": "^2.8.0",
+    "react-bootstrap": "latest",
     "react-dom": "latest",
-    "react-icons": "^4.11.0",
+    "react-icons": "latest",
+    "react-router-dom": "latest",
     "react-scripts": "latest",
-    "socket.io-client": "^4.7.2",
+    "socket.io-client": "latest",
     "web-vitals": "latest"
   },
   "scripts": {

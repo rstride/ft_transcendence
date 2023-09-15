@@ -1,15 +1,15 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
-  const logger = new Logger('bootstrap');
   const app = await NestFactory.create(AppModule);
 
-  app.enableCors(); // Enable CORS
+  app.enableCors({
+    origin: 'http://localhost:3000',  // replace with your frontend application's URL
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  });
 
-  const port = 3001;
-  await app.listen(port);
-  logger.log(`Application listening on port ${port}`);
+  await app.listen(3001);
 }
 bootstrap();
