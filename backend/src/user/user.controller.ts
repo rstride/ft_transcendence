@@ -1,12 +1,12 @@
 import { Controller, Get, Post, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { UsersService } from './users.service';
+import { UserService } from './user.service';
 import { SendMessageDto } from './dto/send-message.dto';
 
 
-@Controller('users')
-export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+@Controller('user')
+export class UserController {
+  constructor(private readonly usersService: UserService) {}
 
   @Get()
   getAllUsers() {

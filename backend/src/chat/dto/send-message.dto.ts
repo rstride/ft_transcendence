@@ -1,5 +1,3 @@
 export class SendMessageDto {
-    readonly message: string;
-    // other fields
-  }
-  
+  readonly message: string;
+}

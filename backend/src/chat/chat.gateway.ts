@@ -1,14 +1,14 @@
-import { Socket } from 'socket.io';
-import { SendMessageDto } from './dto/send-message.dto';  // Import from the correct location
-import { WebSocketGateway } from '@nestjs/websockets';
-import { SubscribeMessage } from '@nestjs/websockets';
-
-
+import { SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
+import { Server } from 'socket.io';
+import { SendMessageDto } from './dto/send-message.dto';
 
 @WebSocketGateway()
 export class ChatGateway {
-  @SubscribeMessage('sendMessage')
-  async sendMessage(client: Socket, payload: SendMessageDto) {
-    // Broadcast message to chat room
+  @WebSocketServer()
+  server: Server;
+
+  @SubscribeMessage('message')
+  handleMessage(client: any, data: SendMessageDto) {
+    client.broadcast.emit('message', data);
   }
 }

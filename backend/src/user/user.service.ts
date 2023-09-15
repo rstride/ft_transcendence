@@ -1,12 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { CreateUserDto } from './dto/create-user.dto';
-import { SendMessageDto } from './dto/send-message.dto';
-import { CreateRoomDto } from './dto/create-room.dto';
-import { JoinRoomDto } from './dto/join-room.dto'
+
 
 @Injectable()
-export class UsersService {
+export class UserService {
   getAllUsers() {
     return [
       { id: 1, username: 'user1' },

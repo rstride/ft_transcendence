@@ -1,12 +1,22 @@
+import { WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
+import { Server, Socket } from 'socket.io';
+import { SendMessageDto } from './chat/dto/send-message.dto';
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+
+@WebSocketGateway()
+export class ChatGateway {
+  @WebSocketServer()
+  server: Server;
+
+  handleMessage(client: Socket, data: SendMessageDto) {
+    client.broadcast.emit('message', data);
+  }
+}
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
-
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    return 'Hello World!';
   }
 }
