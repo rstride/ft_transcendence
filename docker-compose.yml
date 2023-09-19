@@ -1,7 +1,7 @@
 version: '3'
 services:
   frontend:
-    container_name: front-React
+    container_name: React
     build: ./frontend
     ports:
       - "3000:3000"
@@ -11,7 +11,7 @@ services:
       - NODE_ENV=development
 
   backend:
-    container_name: back-Nest
+    container_name: Nest
     build: ./backend
     ports:
       - "6697:6697"
