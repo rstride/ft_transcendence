@@ -14,7 +14,7 @@ build:
 
 # Start Docker containers
 up:
-	@docker-compose up --build
+	@docker-compose up -d
 
 # Stop Docker containers
 down:
