@@ -18,7 +18,7 @@ const LoginPage: FC<LoginPageProps> = ({ containerHeight }) => {
 
   const handleChange = (
     setter: React.Dispatch<React.SetStateAction<string>>,
-    event: ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ): void => {
     setter(event.target.value);
   };

@@ -5,6 +5,7 @@ import Chat from './Chat'; // Make sure this is also converted to TSX
 import { Container, Row, Col } from 'react-bootstrap';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import LoginPage from './LoginPage'; // Make sure this is also converted to TSX
+import context from 'react-bootstrap/esm/AccordionContext';
 
 interface MainProps {
   containerHeight: string;
@@ -25,7 +26,7 @@ const App: FunctionComponent = () => {
     <Router>
       <Routes>
         <Route index element={<Navigate to="/login" />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage containerHeight={containerHeight}/>} />
         <Route path="/main" element={<Main containerHeight={containerHeight} />} />
       </Routes>
     </Router>
