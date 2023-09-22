@@ -38,7 +38,7 @@ ft_transcendence est un site web de jeu en ligne qui permet aux utilisateurs de 
 
 1. Clonez le dépôt
     ```bash
-    git clone https://github.com/votre_nom_dutilisateur/ft_transcendence.git
+    git clone https://github.com/rstride/ft_transcendence.git
     ```
 2. Modifier backend/src/common/envs/template.env en src/common/envs/.env et remplissez les champs 42_CLIENT_ID et 42_CLIENT_SECRET avec les informations de votre application 42
 
