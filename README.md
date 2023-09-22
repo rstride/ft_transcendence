@@ -32,9 +32,7 @@ ft_transcendence est un site web de jeu en ligne qui permet aux utilisateurs de 
 
 ### Prérequis
 
-- Node.js
-- npm
-- PostgreSQL
+- Docker
 
 ### Étapes
 
@@ -42,17 +40,13 @@ ft_transcendence est un site web de jeu en ligne qui permet aux utilisateurs de 
     ```bash
     git clone https://github.com/votre_nom_dutilisateur/ft_transcendence.git
     ```
-2. Naviguez vers le répertoire du projet
+2. Modifier backend/src/common/envs/template.env en src/common/envs/.env et remplissez les champs 42_CLIENT_ID et 42_CLIENT_SECRET avec les informations de votre application 42
+
+3. Mofidier template.env en .env
+
+4. Installez les conteneurs Docker
     ```bash
-    cd ft_transcendence
-    ```
-3. Installez les dépendances
-    ```bash
-    npm install
-    ```
-4. Lancez le projet
-    ```bash
-    npm run start
+    make all
     ```
 
 ## Utilisation
