@@ -1,73 +1,72 @@
-# ft_transcendence
+# What's the goal of the project?
+This project is about creating a web app for the mighty Pong contest!
 
-## Description
+## Main features
+Users can login using the OAuth system of the school's intranet and enable two-factor authentication as well as add friends, see stats of the games they played, invite other users to join a game, etc.
+In addition to that, users can send each other direct messages and create chat rooms.
+Finally, they can play the mighty Pong game against each other or watch other players busy playing.
 
-ft_transcendence est un site web de jeu en ligne qui permet aux utilisateurs de jouer au célèbre jeu Pong tout en profitant de fonctionnalités de chat et de réseau social. Le projet est développé en utilisant NestJS pour le backend et React pour le frontend.
-
-## Table des Matières
-
-- [Fonctionnalités](#fonctionnalités)
-- [Technologies Utilisées](#technologies-utilisées)
-- [Installation](#installation)
-- [Utilisation](#utilisation)
-- [Tests](#tests)
-- [Contributeurs](#contributeurs)
-
-## Fonctionnalités
-
-- Jeu Pong en temps réel
-- Chat avec plusieurs salons et messages directs
-- Authentification via OAuth de l'intranet 42
-- Profils utilisateurs avec avatars et statistiques
-- Sécurité renforcée (chiffrement, protection contre les injections SQL)
-
-## Technologies Utilisées
-
+## Technical Implementation
+- Programming language: Typescript
+- Frontend: ReactJS & Material UI
+- Runtime environment: NodeJS
 - Backend: NestJS
-- Frontend: React
-- Base de données: PostgreSQL
-- Autres: Docker
+- Database: PostgreSQL
+- Containerization: Docker
 
-## Installation
+## How to build the project
 
-### Prérequis
+### Root setup
 
-- Node.js
-- npm
-- PostgreSQL
+- Duplicate 'template.env' and name it '.env'.
 
-### Étapes
+###  Backend setup
 
-1. Clonez le dépôt
-    ```bash
-    git clone https://github.com/votre_nom_dutilisateur/ft_transcendence.git
-    ```
-2. Naviguez vers le répertoire du projet
-    ```bash
-    cd ft_transcendence
-    ```
-3. Installez les dépendances
-    ```bash
-    npm install
-    ```
-4. Lancez le projet
-    ```bash
-    npm run start
-    ```
+- Choose a proper jwt secret in src/auth/constants and name it 'constants.ts'.
 
-## Utilisation
+- Duplicate template.env located at src/common/envs and fill in the details:
+	- FORTYTWO_ID and FORTYTWO_APP_SECRET will be given when registrating the app on the intranet of 42
+	
+- If you want to launch the project with 'make', change the DATABASE_HOST variable in the .env file with 'db'
 
-Ouvrez votre navigateur et accédez à `http://localhost:3000` pour utiliser l'application.
+### Frontend setup
 
-## Tests
+- Duplicate template.env in the frontend root folder and fill the new file (named '.env').
 
-Pour exécuter les tests, utilisez la commande suivante :
+## Run adminer after launching with make
 
 ```bash
-npm run test
+$ docker run --link database-docker:db --network ft_transcendence_mynetwork --name adminer -p 8080:8080 -d adminer
 ```
 
-## Contributeurs
+## Run a test database
 
-rstride, romaurel, masserie
+```bash
 
+# Change the db host in the ./backend/src/common/envs/.env to localhost
+# Don't forget to change it to 'db' after if you want to run backend with docker.
+
+# run the database from backend directory
+$ docker run -h db --name postgres --env-file .env -p 5432:5432 -d postgres
+
+#run adminer
+$ docker run --link postgres:db --name adminer -p 8080:8080 -d adminer
+
+# You can connect to adminer (localhost:8080) with :
+# - System : PostgreSQL
+# - Server : db
+# - Username : postgres
+# - Password : password provided in the .env file
+# - Database : database name provided in the .env file
+
+# stop testing databases
+$ docker stop postgres adminer
+$ docker system prune -af
+$ docker volume prune -f
+
+```
+
+## Prerequisite
+
+Make sure docker is installed.
+If you want to run the project from one of school 42's mac, make sure to first launch the `init_docker.sh` script.

@@ -1,23 +1,21 @@
-# Use an official Node.js runtime as a parent image
 FROM node:latest
 
-# Set the working directory to /app
-WORKDIR /app
+# Create app directory
+WORKDIR /usr/src/app/frontend
 
-# Copy the package.json and package-lock.json files to the container
+# Copy package json and install dependencies
 COPY package*.json ./
-
-# Install dependencies
 RUN npm install
 
-# Copy the rest of the application files to the container
+# Bundle app source
 COPY . .
 
-# Build the application
-RUN npm run build
+# Expose port to access server
+# EXPOSE 8080
 
-# Expose port 3000 for the application
-EXPOSE 3000
+# Command to run our app
+CMD [ "npm", "start" ]
 
-# Start the application
-CMD ["npm", "start"]
+# Sources:
+# - https://siddharth-lakhara.medium.com/dockerizing-a-full-stack-js-app-ceb99411996e
+# - https://nodejs.org/en/docs/guides/nodejs-docker-webapp/

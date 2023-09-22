@@ -6,8 +6,8 @@
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
   <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+    <p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
 <a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
@@ -30,6 +30,54 @@
 
 ```bash
 $ npm install
+```
+
+##  Setup
+
+### Env file configuration :
+
+- Make a copy of the template.env in the src/common/envs folder and name it a .env file in the same folder.
+
+- DATABASE_PASSWORD and DATABASE_NAME should match the configuration of the .env in the root folder.
+
+- FORTYTWO_ID and FORTYTWO_APP_SECRET will be given when registrating the app on the intra.
+
+- Copy constants.template.ts in src/auth/constants to constants.ts and choose a secret of your choice to configure the jwt strategy.
+
+### Register the app on the intra
+
+- Go on the intra -> settings -> api -> register a new app
+- Fill the form
+- You will be given an UID and a secret to put on the .env file.
+
+
+## run testing database
+
+```bash
+
+# run testing container
+
+# Change the db host in the ./backend/src/common/envs/.env to localhost
+# Don't forget to change it to 'db' after if you want to run backend with docker.
+
+# run the database from backend directory
+$ docker run -h db --name postgres --env-file ../.env -p 5432:5432 -d postgres
+
+#run adminer
+$ docker run --link postgres:db --name adminer -p 8080:8080 -d adminer
+
+# You can connect to adminer (localhost:8080) with :
+# - System : PostgreSQL
+# - Server : db
+# - Username : postgres
+# - Password : password provided in the ./backend/src/common/envs/.env file
+# - Database : (blank)
+
+# stop testing databases
+$ docker stop postgres adminer
+$ docker system prune -af
+$ docker volume prune -f
+
 ```
 
 ## Running the app
@@ -61,12 +109,6 @@ $ npm run test:cov
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 

@@ -1,0 +1,14 @@
+.container {
+    padding: 16px;
+}
+
+.input {
+    width: 2ch;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 40px;
+    text-align: center;
+    margin-right: 6px;
+    border: 1px solid;
+    text-transform: uppercase;
+}

@@ -4,8 +4,8 @@
 .PHONY: all build up down ps fclean re logs shell-backend shell-frontend shell-database fast
 
 # Default target executed when no arguments are given to make
-all: build up
-	@echo "Run 'make up' to start the project"
+all: build
+	@docker-compose up
 
 # Build Docker images
 build:
@@ -25,17 +25,18 @@ ps:
 	@docker-compose ps 
 
 # Remove Docker containers, images, and volumes
-fclean: down
-	@if [ -n "$$(sudo docker ps -a -q)" ]; then sudo docker rm -f $$(sudo docker ps -a -q); fi
-	@if [ -n "$$(sudo docker images -q)" ]; then sudo docker rmi -f $$(sudo docker images -q); fi
-	@if [ -n "$$(sudo docker volume ls -q)" ]; then sudo docker volume prune -f; fi
-
-# Rebuild Docker images and containers
 re: fclean all
 
-fast:
-	@docker-compose down -v
-	@docker-compose up --build
+fclean: clean
+	docker system prune --volumes -af
+	docker network prune -f
+	docker image prune -f
+
+clean:
+	docker compose down -v --rmi all --remove-orphans
+
+fast: clean build
+	@docker-compose up -d
 
 # View logs for all containers
 logs:

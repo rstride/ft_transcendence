@@ -1,41 +1,36 @@
-version: '3'
+version: "3.9"
+
 services:
   frontend:
-    container_name: React
     build: ./frontend
+    depends_on:
+        - backend
     ports:
-      - "3000:3000"
-    volumes:
-      - ./frontend:/app
-    environment:
-      - NODE_ENV=development
-
-  backend:
-    container_name: Nest
-    build: ./backend
-    ports:
-      - "6697:6697"
-    volumes:
-      - ./backend:/app
-    environment:
-      - NODE_ENV=development
-
-  db:
-    container_name: pg_container
-    image: postgres
+      - "3000:3000" 
     restart: always
-    environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: test_db
+    container_name: frontend
+    networks:
+      - mynetwork
+  backend:
+    build: ./backend
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    container_name: backend
+    restart: always
+    networks:
+      - mynetwork
+  db:
+    image: postgres:latest
     ports:
       - "5432:5432"
-  pgadmin:
-    container_name: pgadmin4_container
-    image: dpage/pgadmin4
+    env_file:
+      - .env
+    container_name: database
     restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
-    ports:
-      - "5050:80"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:

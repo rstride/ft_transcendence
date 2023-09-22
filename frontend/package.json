@@ -3,23 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@fortawesome/fontawesome-free": "^6.1.2",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.9.2",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/bcrypt": "^5.0.0",
     "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.52",
-    "@types/react": "^18.2.21",
-    "@types/react-dom": "^18.2.7",
-    "@types/react-router-dom": "^5.3.3",
-    "@types/socket.io-client": "^3.0.0",
+    "@types/node": "^16.11.45",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.1",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.8.0",
+    "react-auth-code-input": "^3.2.1",
+    "react-code-input": "^3.10.1",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.11.0",
-    "react-router-dom": "^6.16.0",
-    "react-scripts": "^5.0.1",
-    "socket.io-client": "^4.7.2",
-    "typescript": "^4.9.5",
+    "react-scripts": "5.0.1",
+    "react-window": "^1.8.7",
+    "socket.io-client": "^4.5.1",
+    "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -47,6 +53,10 @@
     ]
   },
   "devDependencies": {
-    "@types/react-bootstrap": "^0.32.32"
+    "@types/react-swipeable-views": "^0.13.1",
+    "@types/react-window": "^1.8.5",
+    "css-loader": "^6.7.1",
+    "react-router-dom": "^6.3.0",
+    "style-loader": "^3.3.1"
   }
 }
