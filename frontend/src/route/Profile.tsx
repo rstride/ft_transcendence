@@ -4,9 +4,11 @@ import { SetUserContext, UserContext } from "../App";
 import ProfileName from "../components/profile/profileName/ProfileName";
 import TfaToggle from "../components/profile/twoFactAuth/TfaToggle";
 import { UserDto } from "../api/dto/user.dto";
+import { FriendBar } from "../components/profile/profileFriends/FriendBar";
 import UserProfileImageModificator from "../components/profile/ProfileImage/UserProfileImageModificator";
 import ProfileImage from "../components/profile/ProfileImage/ProfileImage";
 import { StatBar } from "components/profile/profileStats/StatBar";
+import { HistoryBar } from "components/profile/profileHistory/HistoryBar";
 import { UserAPI } from "api/user.api";
 import { WebsocketContext } from "contexts/WebsocketContext";
 
@@ -14,7 +16,7 @@ export const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  textAlign: "left",
+  textAlign: "center",
   color: theme.palette.text.secondary,
 }));
 
@@ -82,6 +84,14 @@ export const Profile = () => {
           <Grid item>
             <Item>
               <StatBar user={user} />
+            </Item>
+          </Grid>
+          <Grid item>
+            <Item>{user ? <HistoryBar userId={user.id} /> : ""}</Item>
+          </Grid>
+          <Grid item>
+            <Item>
+              <FriendBar />
             </Item>
           </Grid>
         </Grid>

@@ -19,6 +19,7 @@ import { SetUserContext, UserContext } from "../../App";
 import { Link } from "react-router-dom";
 import { UserDto } from "../../api/dto/user.dto";
 import { WebsocketContext } from "contexts/WebsocketContext";
+import Notif from "./Notif";
 
 interface ResponsiveAppBarProps {
   handleToggle: React.ButtonHTMLAttributes<HTMLButtonElement>["onClick"];
@@ -145,7 +146,10 @@ const ResponsiveAppBar = ({ handleToggle, setLoggedIn }: ResponsiveAppBarProps) 
                 {page.name}
               </Button>
             ))}
-          </Box>        
+          </Box>
+
+          <Notif />
+          
           <Box textAlign="center">
             <IconButton sx={{ mr: 3 }} onClick={handleToggle} color="inherit">
               {theme.palette.mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}

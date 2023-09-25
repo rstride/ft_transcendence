@@ -4,9 +4,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { UserDto } from "../api/dto/user.dto";
 import { UserAPI } from "../api/user.api";
 import { Item } from "./Profile";
+import { AddFriendButton } from "../components/profile/profileFriends/AddFriendButton";
 import ProfileImage from "components/profile/ProfileImage/ProfileImage";
 import { BlockButton } from "components/profile/profileFriends/BlockButton";
 import { UserStatus } from "api/dto/user.dto";
+import { HistoryBar } from "components/profile/profileHistory/HistoryBar";
 import { StatBar } from "components/profile/profileStats/StatBar";
 import { WebsocketContext } from "contexts/WebsocketContext";
 
@@ -76,6 +78,9 @@ export const VisitorProfile = () => {
 
         <Grid item xs={4} container spacing={3} direction={"column"} sx={{ mt: 5 }}>
           <Grid item>
+            <Item>
+              <AddFriendButton visited={visited} />
+            </Item>
           </Grid>
 
           <Grid item>
@@ -92,6 +97,9 @@ export const VisitorProfile = () => {
             <Item>
               <StatBar user={visited} />
             </Item>
+          </Grid>
+          <Grid item>
+            <Item>{visited ? <HistoryBar userId={visited.id} /> : ""}</Item>
           </Grid>
         </Grid>
         <Grid item xs={1}></Grid>

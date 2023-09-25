@@ -27,16 +27,9 @@ ps:
 # Remove Docker containers, images, and volumes
 re: fclean all
 
-fclean: clean
-	docker system prune --volumes -af
-	docker network prune -f
-	docker image prune -f
-
-clean:
-	docker compose down -v --rmi all --remove-orphans
-
-fast: clean build
-	@docker-compose up -d
+fast:
+	@docker-compose down -v
+	@docker-compose up --build
 
 # View logs for all containers
 logs:

@@ -4,13 +4,16 @@ import { UserDto } from "./api/dto/user.dto";
 import { UserAPI } from "./api/user.api";
 import ResponsiveAppBar from "./components/generics/AppBar";
 import { Route, Routes } from "react-router-dom";
+import { GamePage } from "./route/GamePage";
 import { Profile } from "./route/Profile";
 import HomeProtect from "./components/auth/HomeProtect";
 import RouteProtect from "./components/auth/RouteProtect";
 import { VisitorProfile } from "./route/VisitorProfile";
 import SelectModeScreen from "route/SelectModePage";
 import Copyright from "components/generics/CopyRight";
-import { WebsocketContext } from "./contexts/WebsocketContext";
+import { WebsocketContext, WebsocketProvider } from "./contexts/WebsocketContext";
+import { Chat } from "components/chat/Chat";
+import PlayWithMe from "components/generics/PlayWithMe";
 
 export const UserContext = React.createContext<UserDto | null>(null);
 export const SetUserContext = React.createContext<any>(null);
@@ -109,6 +112,14 @@ function App() {
                 }
               />
               <Route
+                path="/game"
+                element={
+                  <RouteProtect>
+                    <GamePage />
+                  </RouteProtect>
+                }
+              />
+              <Route
                 path="/profile"
                 element={
                   <RouteProtect>
@@ -124,7 +135,7 @@ function App() {
                   </RouteProtect>
                 }
               />
-              {/* <Route
+              <Route
                 path="/chat"
                 element={
                   <RouteProtect>
@@ -133,8 +144,10 @@ function App() {
                     </WebsocketProvider>
                   </RouteProtect>
                 }
-              /> */}
+              />
             </Routes>
+
+            <PlayWithMe />
             <Copyright />
           </div>
         </SetUserContext.Provider>

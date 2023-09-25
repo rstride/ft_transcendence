@@ -1,9 +1,14 @@
 import * as React from "react";
+import { useState, useContext, useEffect } from "react";
+import { WebsocketContext } from "contexts/WebsocketContext";
 import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
 import Container from "@mui/material/Container";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 import { styled, useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+import ConfirmationPopup from "components/utils/ConfirmationPopup";
 
 const images = [
   {
@@ -80,6 +85,37 @@ const ImageMarked = styled("span")(({ theme }) => ({
 const SelectMode = () => {
   const theme = useTheme();
 
+  const [error, setError] = useState<boolean>(false);
+  const [errorMsg, setErrorMsg] = useState<string>("");
+
+  useEffect(() => {
+    socket.on("errorMsg", (errorMsg: string) => {
+      setError(true);
+      setErrorMsg(errorMsg);
+      setOpen(false);
+    });
+    return () => {
+      socket.off("errorMsg");
+    };
+  });
+
+  /* Matchmaking screen */
+  const [open, setOpen] = useState(false);
+  const matchMaking = () => {
+    setOpen(true);
+  };
+
+  /* Send info to Websocket server */
+  const socket = useContext(WebsocketContext);
+  const launchGame = () => {
+    socket.emit("joinQueue");
+  };
+
+  const handleClose = () => {
+    socket.emit("leaveQueue");
+    setOpen(false);
+  };
+
   return (
     <div className="Gamepage">
       <Container maxWidth="md">
@@ -107,9 +143,9 @@ const SelectMode = () => {
             <ImageButton
               focusRipple
               key={image.title}
-              onClick={() => {
-                if (image.title === "PLAY PONG") {
-                } 
+              onClick={() => {           
+                launchGame();
+                matchMaking();
               }}
               style={{
                 width: image.width,
@@ -137,6 +173,21 @@ const SelectMode = () => {
           ))}
         </Box>
       </Container>
+      <div>
+        {open && (
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={open}
+            onClick={handleClose}
+          >
+            <CircularProgress color="inherit" />
+            <Typography sx={{ m: 2 }}>
+              Matchmaking in progress, don't refresh the page...
+            </Typography>
+          </Backdrop>
+        )}
+      </div>
+      <ConfirmationPopup open={error} setOpen={setError} message={errorMsg} />
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import { GamePlayer } from 'src/game/models/entities/game_player.entity';
 import { Avatar } from 'src/models/avatars/entities/avatar.entity';
 import {
   Column,
@@ -42,6 +43,9 @@ export class User {
 
   @Column()
   loses: number;
+
+  @OneToMany(() => GamePlayer, (gamePlayer) => gamePlayer.user)
+  gamePlayer: GamePlayer;
 
   @Column({ nullable: true })
   currentAvatarData: string;

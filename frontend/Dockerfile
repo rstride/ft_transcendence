@@ -16,6 +16,3 @@ COPY . .
 # Command to run our app
 CMD [ "npm", "start" ]
 
-# Sources:
-# - https://siddharth-lakhara.medium.com/dockerizing-a-full-stack-js-app-ceb99411996e
-# - https://nodejs.org/en/docs/guides/nodejs-docker-webapp/

@@ -19,5 +19,3 @@ EXPOSE 8080
 
 # Command to run our app
 CMD [ "npm", "start"]
-
-# Source: https://siddharth-lakhara.medium.com/dockerizing-a-full-stack-js-app-ceb99411996e
