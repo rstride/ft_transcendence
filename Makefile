@@ -20,9 +20,11 @@ up:
 down:
 	@docker-compose down -v
 
+fclean: down
+
 # List Docker containers
 ps:
-	@docker-compose ps 
+	@docker-compose ps
 
 # Remove Docker containers, images, and volumes
 re: fclean all
